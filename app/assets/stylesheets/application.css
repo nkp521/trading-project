@@ -8,3 +8,28 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+/* Minimal styling for Devise forms */
+.new_user {
+  max-width: 300px;
+  margin: 20px auto;
+}
+
+.new_user .field {
+  margin-bottom: 10px;
+}
+
+.new_user input[type="email"],
+.new_user input[type="password"],
+.new_user input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.new_user input[type="submit"] {
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+}
