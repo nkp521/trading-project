@@ -3,14 +3,14 @@ Strategy.destroy_all
 User.destroy_all
 
 users = [
-  { email: "alice@example.com",   password: "password123" },
-  { email: "bob@example.com",     password: "password123" },
-  { email: "charlie@example.com", password: "password123" },
-  { email: "dana@example.com",    password: "password123" },
-  { email: "eva@example.com",     password: "password123" },
-  { email: "frank@example.com",   password: "password123" },
-  { email: "grace@example.com",   password: "password123" },
-  { email: "henry@example.com",   password: "password123" }
+  { username: "alice", email: "alice@example.com",   password: "password123" },
+  { username: "bob", email: "bob@example.com",     password: "password123" },
+  { username: "charlie", email: "charlie@example.com", password: "password123" },
+  { username: "dana", email: "dana@example.com",    password: "password123" },
+  { username: "eva", email: "eva@example.com",     password: "password123" },
+  { username: "frank", email: "frank@example.com",   password: "password123" },
+  { username: "grace", email: "grace@example.com",   password: "password123" },
+  { username: "henry", email: "henry@example.com",   password: "password123" }
 ]
 
 users.each { |attrs| User.create!(attrs) }
