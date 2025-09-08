@@ -5,19 +5,16 @@
   <h2>Welcome, <%= current_user.username || current_user.email %>!</h2>
   <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
 <% else %>
-  <h2>Sign Up</h2>
-  <%= form_for(User.new, url: user_registration_path) do |f| %>
-    <%= f.text_field :username, placeholder: "Username", autofocus: true %>
-    <%= f.email_field :email, placeholder: "Email" %>
-    <%= f.password_field :password, placeholder: "Password" %>
-    <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
-    <%= f.submit "Sign Up" %>
-  <% end %>
+  <% form_type = params[:form] || 'login' %>
+  
+  <div style="margin-bottom: 20px;">
+    <%= link_to "Sign up", root_path(form: 'signup'), style: "margin-right: 10px; padding: 8px 16px; background: #{form_type == 'signup' ? '#007bff' : '#f8f9fa'}; color: #{form_type == 'signup' ? 'white' : '#333'}; text-decoration: none; border: 1px solid #ccc;" %>
+    <%= link_to "Login", root_path(form: 'login'), style: "padding: 8px 16px; background: #{form_type == 'login' ? '#007bff' : '#f8f9fa'}; color: #{form_type == 'login' ? 'white' : '#333'}; text-decoration: none; border: 1px solid #ccc;" %>
+  </div>
 
-  <h2>Login</h2>
-  <%= form_for(User.new, url: user_session_path) do |f| %>
-    <%= f.email_field :email, placeholder: "Email", autofocus: true %>
-    <%= f.password_field :password, placeholder: "Password" %>
-    <%= f.submit "Login" %>
+  <% if form_type == 'signup' %>
+    <%= render 'signup' %>
+  <% else %>
+    <%= render 'login' %>
   <% end %>
 <% end %>
