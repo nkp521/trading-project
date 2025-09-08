@@ -10,7 +10,7 @@ Users table with email and password. Authentication provides account access and 
 
 ---
 
-## Feature 3: Table Creation / Association
+## Feature 2: Table Creation / Association
 
 **User Story**  
 As a user, I want my strategies tied to me through a join so I only see strategies I’ve created.
@@ -20,7 +20,7 @@ Create User and Strategy tables, then a Join table `user_strategies` table that 
 
 ---
 
-## Feature 2: Create a Strategy
+## Feature 3: Create a Strategy
 
 **User Story**  
 As a user, I want to create a new trading strategy so I can define my trading approaches.
