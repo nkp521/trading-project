@@ -1,0 +1,9 @@
+<h1>Strategies</h1>
+
+<% @strategies.each do |strategy| %>
+  <div>
+    <h3><%= link_to strategy.name, strategy %></h3>
+    <p>Risk: <%= strategy.risk_level %></p>
+    <p>Description: <%= strategy.description %></p>
+  </div>
+<% end %>
