@@ -1,5 +1,5 @@
 class StrategiesController < ApplicationController
-  before_action :set_strategy, only: [:show]
+  before_action :set_strategy, only: [ :show ]
 
   def index
     @strategies = Strategy.all
