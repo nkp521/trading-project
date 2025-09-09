@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root "home#index"
   
   resources :strategies, only: [:index, :show]
+  resources :users, only: [:index, :show]
 end

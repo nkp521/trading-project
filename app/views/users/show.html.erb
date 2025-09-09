@@ -1,0 +1,15 @@
+<h1><%= @user.username  %></h1>
+<h3>Email: <%= @user.email %></h3>
+
+<% if @user.strategies.any? %>
+  <h4>Strategies:</h4>
+  <ul>
+    <% @user.strategies.each do |strategy| %>
+      <li><%= link_to strategy.name, strategy_path(strategy) %> Risk: <%= strategy.risk_level %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No created strategies</p>
+<% end %>
+
+<%= link_to "Back to Users", users_path %>
