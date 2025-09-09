@@ -3,7 +3,7 @@ class Strategy < ApplicationRecord
   has_many :users, through: :user_strategies
 
   scope :with_risk, ->(level) { where(risk_level: level) }
-  scope :low, -> { where(risk_level: 'Low') }
-  scope :medium, -> { where(risk_level: 'Medium') }
-  scope :high, -> { where(risk_level: 'Migh') }
+  scope :low_risk, -> { where(risk_level: 'Low') }
+  scope :medium_risk, -> { where(risk_level: 'Medium') }
+  scope :high_risk, -> { where(risk_level: 'Migh') }
 end
