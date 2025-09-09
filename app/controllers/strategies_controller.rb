@@ -6,6 +6,7 @@ class StrategiesController < ApplicationController
 
   def index
     @strategies = Strategy.all
+    @strategies = @strategies.with_risk(params[:risk]) if params[:risk].present?
   end
 
   def new
