@@ -1,6 +1,8 @@
 <h1>Strategies</h1>
 
-<%= link_to "New Strategy", new_user_strategy_path(current_user) %>
+<% if user_signed_in? %>
+  <%= link_to "Create New Strategy", new_user_strategy_path(current_user) %>
+<% end %>
 
 <% @strategies.each do |strategy| %>
   <div>

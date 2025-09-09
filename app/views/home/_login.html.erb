@@ -1,11 +1,19 @@
 <h2>Login</h2>
 <%= form_with model: User.new, url: user_session_path, local: true do |f| %>
-  <%= f.email_field :email, placeholder: "Email", autofocus: true %>
+  <div>
+    <%= f.label :email, "Email" %>
+    <%= f.email_field :email, placeholder: "Email", autofocus: true %>
+  </div>
 
-  <%= f.password_field :password, placeholder: "Password" %>
+  <div>
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password, placeholder: "Password" %>
+  </div>
 
-  <%= f.check_box :remember_me %>
-  <%= f.label :remember_me, "Remember me" %>
+  <div>
+    <%= f.check_box :remember_me %>
+    <%= f.label :remember_me, "Remember me" %>
+  </div>
   
   <%= f.submit "Login" %>
 <% end %>

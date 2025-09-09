@@ -1,26 +1,22 @@
 class StrategiesController < ApplicationController
-  before_action :set_strategy, only: [ :show ]
   before_action :authenticate_user!, only: [ :new, :create ]
   before_action :set_user, only: [ :new, :create ]
-  
+  before_action :ensure_owner!, only: [ :new, :create ]
+  before_action :set_strategy, only: [ :show ]
+
   def index
     @strategies = Strategy.all
   end
 
-  def show
-  end
-
   def new
-    @user = User.find(params[:user_id])
-    @strategy = @user.strategies.build
+    @strategy = Strategy.new
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @strategy = @user.strategies.build(strategy_params)
-    
+    @strategy = Strategy.new(strategy_params)
     if @strategy.save
-      redirect_to strategies_path, notice: 'Strategy was successfully created.'
+      UserStrategy.create!(user: @user, strategy: @strategy)
+      redirect_to strategies_path, notice: "Strategy created"
     else
       render :new
     end
@@ -34,6 +30,11 @@ class StrategiesController < ApplicationController
 
   def set_user
     @user = User.find(params[:user_id])
+  end
+
+  def ensure_owner!
+    redirect_to new_user_session_path, alert: "Sign in or Create an account to create a strategy" and return unless current_user
+    head :forbidden unless current_user.id == @user.id
   end
 
   def strategy_params
