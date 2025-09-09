@@ -8,3 +8,32 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+.new_user {
+  max-width: 300px;
+  margin: 20px auto;
+}
+
+.new_user input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.new_user input[type="submit"] {
+  background: #007bff;
+  color: white;
+  border: none;
+}
+
+.toggle-button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ccc;
+}
+
+.toggle-button.active {
+  background: #007bff;
+  color: white;
+}
