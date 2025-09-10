@@ -62,4 +62,11 @@ group :test do
   gem "selenium-webdriver"
 end
 
+group :development, :test do
+  gem "pry"
+  gem "capybara"
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+end
+
 gem "devise", "~> 4.9"
