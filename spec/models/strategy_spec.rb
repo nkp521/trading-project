@@ -21,4 +21,12 @@ RSpec.describe Strategy, type: :model do
     expect(build(:strategy, description: nil)).not_to be_valid
   end
   
+  it 'requires a long_entry' do
+    expect(build(:strategy, long_entry: nil)).not_to be_valid
+  end
+
+  it 'requires a short_entry' do
+    expect(build(:strategy, short_entry: nil)).not_to be_valid
+  end
+  
 end
