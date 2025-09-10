@@ -1,5 +1,7 @@
 <h2>Login</h2>
-<%= form_with model: User.new, url: user_session_path, local: true do |f| %>
+<% login_user = User.new %>
+<%= render "shared/errors", object: login_user %>
+<%= form_with model: login_user, url: user_session_path, local: true do |f| %>
   <div>
     <%= f.label :email, "Email" %>
     <%= f.email_field :email, placeholder: "Email", autofocus: true %>

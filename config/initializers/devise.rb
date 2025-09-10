@@ -338,10 +338,7 @@ Rails.application.config.to_prepare do
         set_minimum_password_length
         @user = resource
         @form_type = "signup"
-        respond_to do |format|
-          format.html { render "home/index", status: :unprocessable_entity }
-          format.turbo_stream { render "home/index", formats: :html, status: :unprocessable_entity }
-        end
+        render "home/index", status: :unprocessable_entity
       end
     end
   end
