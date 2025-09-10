@@ -311,3 +311,38 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 end
+
+# Force Devise registrations to render our home page on errors without adding new files
+Rails.application.config.to_prepare do
+  Devise::RegistrationsController.class_eval do
+    def new
+      redirect_to root_path(form: "signup")
+    end
+
+    def create
+      build_resource(sign_up_params)
+
+      resource.save
+      if resource.persisted?
+        if resource.active_for_authentication?
+          set_flash_message! :notice, :signed_up
+          sign_up(resource_name, resource)
+          respond_with resource, location: after_sign_up_path_for(resource)
+        else
+          set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+          expire_data_after_sign_in!
+          respond_with resource, location: after_inactive_sign_up_path_for(resource)
+        end
+      else
+        clean_up_passwords resource
+        set_minimum_password_length
+        @user = resource
+        @form_type = "signup"
+        respond_to do |format|
+          format.html { render "home/index", status: :unprocessable_entity }
+          format.turbo_stream { render "home/index", formats: :html, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
+end

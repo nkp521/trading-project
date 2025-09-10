@@ -18,6 +18,13 @@ RSpec.describe "Strategies", type: :request do
         }
       }.to change { Strategy.count }.by(1)
 
+      expect(Strategy.first).to have_attributes({
+        name: "strategy",
+        description: "description",
+        long_entry: "long",
+        short_entry: "short",
+        risk_level: "Low"
+      })
       expect(response).to redirect_to(strategies_path)
     end
   end

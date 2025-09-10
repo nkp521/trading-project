@@ -48,6 +48,12 @@ group :development, :test do
   gem "brakeman", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  gem "capybara"
+  gem "factory_bot_rails"
+  gem "pry"
+  gem "rspec-rails"
+  gem "rubocop"
+  gem "rubocop-performance"
   gem "rubocop-rails-omakase", require: false
 end
 
@@ -59,15 +65,6 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "selenium-webdriver"
-end
-
-group :development, :test do
-  gem "capybara"
-  gem "factory_bot_rails"
-  gem "pry"
-  gem "rspec-rails"
-  gem "rubocop"
-  gem "rubocop-performance"
 end
 
 gem "devise", "~> 4.9"
