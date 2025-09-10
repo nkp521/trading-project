@@ -15,5 +15,9 @@ RSpec.describe User, type: :model do
       duplicate = build(:user, username: 'user1')
       expect(duplicate).not_to be_valid
     end
+
+    it 'requires 3 characters atleast 3 characters for username' do
+      expect(build(:user, username: 'ab')).not_to be_valid
+    end
   end
 end
