@@ -37,5 +37,9 @@ RSpec.describe User, type: :model do
     it 'requires a password' do
       expect(build(:user, password: nil)).not_to be_valid
     end
+
+    it 'requires atleast 8 characters for password' do
+      expect(build(:user, password: '1234567')).not_to be_valid
+    end
   end
 end
