@@ -1,0 +1,10 @@
+<h1><%= @strategy.name %></h1>
+<h3>Risk Level: <%= @strategy.risk_level %></h3>
+
+<p><strong>Description:</strong> <%= @strategy.description %></p>
+
+<p><strong>Long Entry:</strong> <%= @strategy.long_entry %></p>
+
+<p><strong>Short Entry:</strong> <%= @strategy.short_entry %></p>
+
+<%= link_to "Back to Strategies", strategies_path %>
