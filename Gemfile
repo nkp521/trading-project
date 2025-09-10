@@ -63,10 +63,10 @@ group :test do
 end
 
 group :development, :test do
-  gem 'pry'
-  gem 'capybara'
-  gem 'rspec-rails', '~> 6.0'
-  gem 'factory_bot_rails'
+  gem "pry"
+  gem "capybara"
+  gem "rspec-rails"
+  gem "factory_bot_rails"
 end
 
 gem "devise", "~> 4.9"
