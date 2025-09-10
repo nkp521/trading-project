@@ -16,8 +16,12 @@ RSpec.describe User, type: :model do
       expect(duplicate).not_to be_valid
     end
 
-    it 'requires 3 characters atleast 3 characters for username' do
+    it 'requires atleast 3 characters for username' do
       expect(build(:user, username: 'ab')).not_to be_valid
+    end
+
+    it 'has no more than 20 characters for username' do
+      expect(build(:user, username: 'user12345678901234567890')).not_to be_valid
     end
   end
 end
