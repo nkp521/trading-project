@@ -2,6 +2,8 @@ class Strategy < ApplicationRecord
   has_many :user_strategies
   has_many :users, through: :user_strategies
 
+  validates :name, presence: true, uniqueness: true
+
   scope :with_risk, ->(level) { where(risk_level: level) }
   scope :low_risk, -> { where(risk_level: "Low") }
   scope :medium_risk, -> { where(risk_level: "Medium") }
