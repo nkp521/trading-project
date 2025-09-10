@@ -16,4 +16,9 @@ RSpec.describe Strategy, type: :model do
     duplicate = build(:strategy, name: 'strategy')
     expect(duplicate).not_to be_valid
   end
+
+  it 'requires a description' do
+    expect(build(:strategy, description: nil)).not_to be_valid
+  end
+  
 end
