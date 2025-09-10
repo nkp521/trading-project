@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :strategies, only: [ :index, :show ]
 
   resources :users, only: [ :index, :show ] do
-    resources :strategies, only: [ :new, :create ], controller: 'strategies'
+    resources :strategies, only: [ :new, :create ], controller: "strategies"
   end
 end

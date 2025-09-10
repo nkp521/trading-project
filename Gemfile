@@ -66,6 +66,8 @@ group :development, :test do
   gem "capybara"
   gem "rspec-rails"
   gem "factory_bot_rails"
+  gem "rubocop"
+  gem "rubocop-performance"
 end
 
 gem "devise", "~> 4.9"
