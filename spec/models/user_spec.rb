@@ -23,5 +23,15 @@ RSpec.describe User, type: :model do
     it 'has no more than 20 characters for username' do
       expect(build(:user, username: 'user12345678901234567890')).not_to be_valid
     end
+
+    it 'requires an email' do
+      expect(build(:user, email: nil)).not_to be_valid
+    end
+
+    it 'requires a unique email' do
+      create(:user, email: 'user1@example.com')
+      duplicate = build(:user, email: 'user1@example.com')
+      expect(duplicate).not_to be_valid
+    end
   end
 end
