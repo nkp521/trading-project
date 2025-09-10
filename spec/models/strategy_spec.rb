@@ -28,5 +28,12 @@ RSpec.describe Strategy, type: :model do
   it 'requires a short_entry' do
     expect(build(:strategy, short_entry: nil)).not_to be_valid
   end
-  
+
+  it 'requires a risk_level' do
+    expect(build(:strategy, risk_level: nil)).not_to be_valid
+  end
+
+  it 'requires a valid risk_level' do
+    expect(build(:strategy, risk_level: 'Medium')).to be_valid
+  end
 end
