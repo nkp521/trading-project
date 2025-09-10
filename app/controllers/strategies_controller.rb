@@ -1,8 +1,8 @@
 class StrategiesController < ApplicationController
-  before_action :authenticate_user!, only: [ :new, :create ]
-  before_action :set_user, only: [ :new, :create ]
-  before_action :ensure_owner!, only: [ :new, :create ]
-  before_action :set_strategy, only: [ :show ]
+  before_action :authenticate_user!, only: %i[new create]
+  before_action :set_user, only: %i[new create]
+  before_action :ensure_owner!, only: %i[new create]
+  before_action :set_strategy, only: [:show]
 
   def index
     @strategies = params[:risk].present? ? Strategy.with_risk(params[:risk]) : Strategy.all
@@ -22,7 +22,7 @@ class StrategiesController < ApplicationController
     end
   end
 
-  private
+private
 
   def set_strategy
     @strategy = Strategy.find(params[:id])
@@ -33,7 +33,11 @@ class StrategiesController < ApplicationController
   end
 
   def ensure_owner!
-    redirect_to new_user_session_path, alert: "Sign in or Create an account to create a strategy" and return unless current_user
+    unless current_user
+      redirect_to new_user_session_path,
+                  alert: "Sign in or Create an account to create a strategy" and return
+    end
+
     head :forbidden unless current_user.id == @user.id
   end
 

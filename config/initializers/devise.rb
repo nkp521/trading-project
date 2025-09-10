@@ -311,3 +311,55 @@ Devise.setup do |config|
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 end
+
+# Force Devise registrations to render our home page on errors without adding new files
+Rails.application.config.to_prepare do
+  Devise::RegistrationsController.class_eval do
+    def new
+      redirect_to root_path(form: "signup")
+    end
+
+    def create
+      build_resource(sign_up_params)
+
+      resource.save
+      if resource.persisted?
+        if resource.active_for_authentication?
+          set_flash_message! :notice, :signed_up
+          sign_up(resource_name, resource)
+          respond_with resource, location: after_sign_up_path_for(resource)
+        else
+          set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
+          expire_data_after_sign_in!
+          respond_with resource, location: after_inactive_sign_up_path_for(resource)
+        end
+      else
+        clean_up_passwords resource
+        set_minimum_password_length
+        session[:signup_errors] = resource.errors.full_messages
+        session[:signup_params] = sign_up_params.except(:password, :password_confirmation)
+        redirect_to root_path(form: "signup")
+      end
+    end
+  end
+
+  Devise::SessionsController.class_eval do
+    def new
+      session[:login_errors] = ["Invalid email or password"] if params[:user].present?
+      session[:login_params] = params[:user]&.except(:password) if params[:user].present?
+      redirect_to root_path(form: "login")
+    end
+
+    def create
+      self.resource = warden.authenticate!(auth_options)
+      set_flash_message!(:notice, :signed_in)
+      sign_in(resource_name, resource)
+      yield resource if block_given?
+      respond_with resource, location: after_sign_in_path_for(resource)
+    rescue
+      session[:login_errors] = ["Invalid email or password"]
+      session[:login_params] = sign_in_params.except(:password)
+      redirect_to root_path(form: "login")
+    end
+  end
+end
