@@ -5,7 +5,7 @@ class StrategiesController < ApplicationController
   before_action :set_strategy, only: [ :show ]
 
   def index
-    @strategies = Strategy.all
+    @strategies = params[:risk].present? ? Strategy.with_risk(params[:risk]) : Strategy.all
   end
 
   def new
