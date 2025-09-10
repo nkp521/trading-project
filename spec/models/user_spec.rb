@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it 'has a valid factory' do
+  it 'has a valid user' do
     expect(build(:user)).to be_valid
   end
 
@@ -32,6 +32,10 @@ RSpec.describe User, type: :model do
       create(:user, email: 'user1@example.com')
       duplicate = build(:user, email: 'user1@example.com')
       expect(duplicate).not_to be_valid
+    end
+
+    it 'requires a password' do
+      expect(build(:user, password: nil)).not_to be_valid
     end
   end
 end
