@@ -18,7 +18,7 @@ class StrategiesController < ApplicationController
       UserStrategy.create!(user: @user, strategy: @strategy)
       redirect_to strategies_path, notice: "Strategy created"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
