@@ -5,5 +5,5 @@ class Strategy < ApplicationRecord
   scope :with_risk, ->(level) { where(risk_level: level) }
   scope :low_risk, -> { where(risk_level: 'Low') }
   scope :medium_risk, -> { where(risk_level: 'Medium') }
-  scope :high_risk, -> { where(risk_level: 'Migh') }
+  scope :high_risk, -> { where(risk_level: 'High') }
 end
