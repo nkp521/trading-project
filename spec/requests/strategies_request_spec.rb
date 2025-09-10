@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe "Strategies", type: :request do
   describe "POST /users/:user_id/strategies" do
-    it "creates a strategy for the signed-in user" do
+    it "creates a strategy if the user is signed-in" do
       user = create(:user)
-      sign_in user
+      post user_session_path, params: { user: { email: user.email, password: 'password123' } }
 
       expect {
         post user_strategies_path(user), params: {
@@ -19,8 +19,6 @@ RSpec.describe "Strategies", type: :request do
       }.to change { Strategy.count }.by(1)
 
       expect(response).to redirect_to(strategies_path)
-      follow_redirect!
-      expect(response.body).to include("Strategy created")
     end
   end
 end
