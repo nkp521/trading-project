@@ -342,4 +342,24 @@ Rails.application.config.to_prepare do
       end
     end
   end
+
+  Devise::SessionsController.class_eval do
+    def new
+      session[:login_errors] = ["Invalid email or password"] if params[:user].present?
+      session[:login_params] = params[:user]&.except(:password) if params[:user].present?
+      redirect_to root_path(form: "login")
+    end
+
+    def create
+      self.resource = warden.authenticate!(auth_options)
+      set_flash_message!(:notice, :signed_in)
+      sign_in(resource_name, resource)
+      yield resource if block_given?
+      respond_with resource, location: after_sign_in_path_for(resource)
+    rescue
+      session[:login_errors] = ["Invalid email or password"]
+      session[:login_params] = sign_in_params.except(:password)
+      redirect_to root_path(form: "login")
+    end
+  end
 end
