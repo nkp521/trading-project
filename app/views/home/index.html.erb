@@ -5,11 +5,6 @@
   <h2>Welcome <%= current_user.username %>!</h2>
 <% else %>
   <div id="auth-forms">
-    <div class="toggle-buttons">
-      <%= link_to "Sign up", root_path(form: 'signup'), class: "toggle-button #{@form_type == 'signup' ? 'active' : 'inactive'}" %>
-      <%= link_to "Login", root_path(form: 'login'), class: "toggle-button #{@form_type == 'login' ? 'active' : 'inactive'}" %>
-    </div>
-
     <% if @form_type == 'signup' %>
       <%= render 'home/signup' %>
     <% else %>
