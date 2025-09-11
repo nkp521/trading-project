@@ -37,3 +37,13 @@
   background: #007bff;
   color: white;
 }
+
+nav {
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+nav a {
+  margin-right: 1rem;
+}
