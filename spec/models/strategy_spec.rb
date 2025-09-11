@@ -8,9 +8,13 @@ RSpec.describe Strategy, type: :model do
   describe 'validations' do
     it { should validate_presence_of(:name) }
     it { should validate_uniqueness_of(:name) }
+    it { should validate_length_of(:name).is_at_least(3).is_at_most(20) }
     it { should validate_presence_of(:description) }
+    it { should validate_length_of(:description).is_at_least(5).is_at_most(50) }
     it { should validate_presence_of(:long_entry) }
+    it { should validate_length_of(:long_entry).is_at_least(5).is_at_most(20) }
     it { should validate_presence_of(:short_entry) }
+    it { should validate_length_of(:short_entry).is_at_least(5).is_at_most(20) }
     it { should validate_inclusion_of(:risk_level).in_array(%w[Low Medium High]) }
   end
 
