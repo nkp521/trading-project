@@ -2,17 +2,25 @@
 <p class="alert"><%= alert %></p>
 
 <% if user_signed_in? %>
-  <h2>Welcome <%= current_user.username %>!</h2>
-  
-  <%= link_to "View Strategies", strategies_path %> | 
-  <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
+  <div id="welcome">
+    <h2>Welcome <%= current_user.username %>!</h2>
+  </div>
+
+  <div id="about">
+    <p>This is a place for creating and sharing stonk strategies.</p>
+    <p>You can create your own strategies</p>
+    <p>You can view all strategies</p>
+    <p>You can view other people's strategies</p>
+    <p>You can view other people's profiles</p>
+    <p>Use the NavBar to navigate the site</p>
+  </div>
+
+  <div id='current-user-show'>
+    <%= link_to "View Your Strategies", user_path(current_user), class: "btn" %>
+  </div>
+
 <% else %>
   <div id="auth-forms">
-    <div class="toggle-buttons">
-      <%= link_to "Sign up", root_path(form: 'signup'), class: "toggle-button #{@form_type == 'signup' ? 'active' : 'inactive'}" %>
-      <%= link_to "Login", root_path(form: 'login'), class: "toggle-button #{@form_type == 'login' ? 'active' : 'inactive'}" %>
-    </div>
-
     <% if @form_type == 'signup' %>
       <%= render 'home/signup' %>
     <% else %>

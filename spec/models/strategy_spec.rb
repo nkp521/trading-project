@@ -6,35 +6,17 @@ RSpec.describe Strategy, type: :model do
   end
 
   describe 'validations' do
-    it 'requires a valid name' do
-      expect(build(:strategy, name: nil)).not_to be_valid
-    end
+    it { should validate_presence_of(:name) }
+    it { should validate_uniqueness_of(:name) }
+    it { should validate_presence_of(:description) }
+    it { should validate_presence_of(:long_entry) }
+    it { should validate_presence_of(:short_entry) }
+    it { should validate_inclusion_of(:risk_level).in_array(%w[Low Medium High]) }
   end
 
-  it 'requires a unique name' do
-    create(:strategy, name: 'strategy')
-    duplicate = build(:strategy, name: 'strategy')
-    expect(duplicate).not_to be_valid
-  end
-
-  it 'requires a description' do
-    expect(build(:strategy, description: nil)).not_to be_valid
-  end
-
-  it 'requires a long_entry' do
-    expect(build(:strategy, long_entry: nil)).not_to be_valid
-  end
-
-  it 'requires a short_entry' do
-    expect(build(:strategy, short_entry: nil)).not_to be_valid
-  end
-
-  it 'requires a risk_level' do
-    expect(build(:strategy, risk_level: nil)).not_to be_valid
-  end
-
-  it 'requires a valid risk_level' do
-    expect(build(:strategy, risk_level: 'Medium')).to be_valid
+  describe 'associations' do
+    it { should have_many(:user_strategies) }
+    it { should have_many(:users).through(:user_strategies) }
   end
 
   describe 'scopes' do
