@@ -335,7 +335,6 @@ Rails.application.config.to_prepare do
         end
       else
         clean_up_passwords resource
-        set_minimum_password_length
         session[:signup_errors] = resource.errors.full_messages
         session[:signup_params] = sign_up_params.except(:password, :password_confirmation)
         redirect_to root_path(form: "signup")
