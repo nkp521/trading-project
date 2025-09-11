@@ -1,9 +1,5 @@
 <h1>Strategies</h1>
 
-<% if user_signed_in? %>
-  <%= link_to "Create New Strategy", new_user_strategy_path(current_user) %>
-<% end %>
-
 <%= form_tag strategies_path, method: :get do %>
   <%= label_tag :risk, "Risk level Filter" %>
   <%= select_tag :risk, options_for_select([["All", ""], ["Low", "Low"], ["Medium", "Medium"], ["High", "High"]], params[:risk]) %>
