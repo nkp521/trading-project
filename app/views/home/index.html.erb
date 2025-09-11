@@ -14,6 +14,10 @@
     <p>Use the NavBar to navigate the site</p>
   </div>
 
+  <div id='current-user-show'>
+    <%= link_to "View Your Strategies", user_path(current_user), class: "btn" %>
+  </div>
+
 <% else %>
   <div id="auth-forms">
     <% if @form_type == 'signup' %>

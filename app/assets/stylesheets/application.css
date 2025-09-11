@@ -114,12 +114,35 @@ nav a:not(.btn):hover {
   font-size: 20px;
 }
 
+#current-user-show {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: block;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
 
 
 .nav-center {
   display: flex;
   justify-content: center;
-  flex: 1;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  align-items: center;
+  z-index: 1;
 }
 
 .nav-center a {
@@ -305,6 +328,70 @@ main {
   flex: 1;
   padding-bottom: 3rem;
   padding-top: 4rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  display: block;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+main h1 {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+}
+
+main h2 {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+}
+
+main h3 {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+}
+
+main p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+}
+
+main div {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+}
+
+main ul {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+}
+
+main li {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
 }
 
 footer {
