@@ -6,8 +6,8 @@ RSpec.describe "Strategies", type: :request do
       {
         name: "strategy",
         description: "description",
-        long_entry: "long",
-        short_entry: "short",
+        long_entry: "long_entry",
+        short_entry: "short_entry",
         risk_level: "Low"
       }
     end
