@@ -440,6 +440,13 @@ footer {
   z-index: 1000;
 }
 
+.footer-right {
+  position: absolute;
+  right: 1rem;
+  top: 2.5rem;
+  font-size: 10px;
+}
+
 .form-container {
   width: 100%;
   max-width: 480px;
