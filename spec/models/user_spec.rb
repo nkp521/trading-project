@@ -1,45 +1,26 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  subject { build(:user) }
+
   it 'has a valid user' do
-    expect(build(:user)).to be_valid
+    expect(subject).to be_valid
   end
 
   describe 'validations' do
-    it 'requires a username' do
-      expect(build(:user, username: nil)).not_to be_valid
-    end
+    it { should validate_presence_of(:username) }
+    it { should validate_uniqueness_of(:username) }
+    it { should validate_length_of(:username).is_at_least(3).is_at_most(20) }
+    
+    it { should validate_presence_of(:email) }
+    it { should validate_uniqueness_of(:email).case_insensitive }
+    
+    it { should validate_presence_of(:password) }
+    it { should validate_length_of(:password).is_at_least(8) }
+  end
 
-    it 'requires a unique username' do
-      create(:user, username: 'user1')
-      duplicate = build(:user, username: 'user1')
-      expect(duplicate).not_to be_valid
-    end
-
-    it 'requires atleast 3 characters for username' do
-      expect(build(:user, username: 'ab')).not_to be_valid
-    end
-
-    it 'has no more than 20 characters for username' do
-      expect(build(:user, username: 'user12345678901234567890')).not_to be_valid
-    end
-
-    it 'requires an email' do
-      expect(build(:user, email: nil)).not_to be_valid
-    end
-
-    it 'requires a unique email' do
-      create(:user, email: 'user1@example.com')
-      duplicate = build(:user, email: 'user1@example.com')
-      expect(duplicate).not_to be_valid
-    end
-
-    it 'requires a password' do
-      expect(build(:user, password: nil)).not_to be_valid
-    end
-
-    it 'requires atleast 8 characters for password' do
-      expect(build(:user, password: '1234567')).not_to be_valid
-    end
+  describe 'associations' do
+    it { should have_many(:user_strategies) }
+    it { should have_many(:strategies).through(:user_strategies) }
   end
 end

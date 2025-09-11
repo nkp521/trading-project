@@ -55,6 +55,7 @@ group :development, :test do
   gem "rubocop"
   gem "rubocop-performance"
   gem "rubocop-rails-omakase", require: false
+    gem "shoulda-matchers"
 end
 
 group :development do
