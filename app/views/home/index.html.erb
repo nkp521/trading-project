@@ -2,7 +2,18 @@
 <p class="alert"><%= alert %></p>
 
 <% if user_signed_in? %>
-  <h2>Welcome <%= current_user.username %>!</h2>
+  <div id="welcome">
+    <h2>Welcome <%= current_user.username %>!</h2>
+  </div>
+
+  <div id="about">
+    <p>This is a place for creating and sharing stonk strategies.</p>
+    <p>You can create your own strategies</p>
+    <p>You can view other people's strategies</p>
+    <p>You can create your own strategies</p>
+    <p>Use the NavBar to navigate the site</p>
+  </div>
+
 <% else %>
   <div id="auth-forms">
     <% if @form_type == 'signup' %>
