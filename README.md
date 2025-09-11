@@ -26,7 +26,7 @@ The app features a UI with animated stock candlesticks
 ### Step 1: Clone the Repository
 
 ```bash
-git clone <your-repo-url>
+git clone git@github.com:nkp521/trading-project.git
 cd trading-project
 ```
 
