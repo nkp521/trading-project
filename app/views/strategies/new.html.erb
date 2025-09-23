@@ -2,7 +2,7 @@
   <h1>Create New Strategy</h1>
 
   <%= form_with model: [@user, @strategy], url: user_strategies_path(@user), local: true do |form| %>
-    <%= render "shared/errors", object: @strategy %>
+    <%= render ErrorComponent.new(object: @strategy) %>
 
     <div>
       <%= form.label :name %>

@@ -1,6 +1,6 @@
 <h2>Login</h2>
 <% login_user = @login_user || User.new %>
-<%= render "shared/errors", object: login_user %>
+<%= render ErrorComponent.new(object: login_user) %>
 <%= form_with model: User.new, url: user_session_path, local: true, data: { turbo: false } do |f| %>
   <div>
     <%= f.label :email, "Email" %>
