@@ -3,7 +3,6 @@ class ErrorComponent < ViewComponent::Base
     @object = object
   end
 
-
   private
 
   attr_reader :object
