@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ErrorComponent, type: :component do
   include ViewComponent::TestHelpers
 
-  it "renders" do
+  it "renders error class" do
     user = User.new
     render_inline(ErrorComponent.new(object: user))
 
