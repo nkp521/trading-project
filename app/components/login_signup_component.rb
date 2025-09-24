@@ -1,5 +1,6 @@
 class LoginSignupComponent < ViewComponent::Base
   def initialize(form_type:, user:, login_user:)
+    super()
     @form_type = form_type
     @user = user
     @login_user = login_user
