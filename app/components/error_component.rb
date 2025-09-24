@@ -3,10 +3,10 @@ class ErrorComponent < ViewComponent::Base
     @object = object
   end
 
-  private
+private
 
   attr_reader :object
-  
+
   def errors
     object.errors.full_messages
   end
