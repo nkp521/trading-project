@@ -19,6 +19,15 @@
     <%= link_to "View Your Strategies", user_path(current_user), class: "btn" %>
   </div>
 
+  <div class="search-container" data-controller="search">
+    <input type="text" placeholder="Search news using Ticker" class="search-ticker" data-search-target="input">
+    <button type="button" class="search-button" data-action="search#search">Search</button>
+    
+    <div data-search-target="newsContainer" class="news-container">
+      <p>Enter a ticker symbol to search for news</p>
+    </div>
+  </div>
+
 <% else %>
   <%= render LoginSignupComponent.new(form_type: @form_type, user: @user, login_user: @login_user) %>
 <% end %>
