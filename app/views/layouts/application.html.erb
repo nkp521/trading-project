@@ -11,8 +11,8 @@
   </head>
 
   <body>
-    <%= render 'shared/candlestick_bg' %>
-    
+    <%= render CandlestickBackgroundComponent.new %>
+
     <% if user_signed_in? %>
       <nav>
         <%= link_to root_path do %>

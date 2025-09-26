@@ -1,0 +1,9 @@
+<div class="candlestick-bg">
+  <% 15.times do |c| %>
+    <div class="candle">
+      <div class="wick-top"></div>
+      <div class="candle-body <%= c.even? ? 'green' : 'red' %>"></div>
+      <div class="wick-bottom"></div>
+    </div>
+  <% end %>
+</div>

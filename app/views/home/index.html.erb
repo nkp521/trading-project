@@ -20,11 +20,5 @@
   </div>
 
 <% else %>
-  <div id="auth-forms">
-    <% if @form_type == 'signup' %>
-      <%= render 'home/signup' %>
-    <% else %>
-      <%= render 'home/login' %>
-    <% end %>
-  </div>
+  <%= render LoginSignupComponent.new(form_type: @form_type, user: @user, login_user: @login_user) %>
 <% end %>
