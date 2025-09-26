@@ -19,9 +19,9 @@
     <%= link_to "View Your Strategies", user_path(current_user), class: "btn" %>
   </div>
 
-  <div class="search-container">
-    <input type="text" placeholder="Search for news..." class="search-input">
-    <button type="button" class="search-button">Search</button>
+  <div class="search-container" data-controller="search">
+    <input type="text" placeholder="Search news using Ticker" class="search-ticker" data-search-target="input">
+    <button type="button" class="search-button" data-action="search#search">Search</button>
   </div>
 
 <% else %>
