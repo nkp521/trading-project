@@ -19,6 +19,11 @@
     <%= link_to "View Your Strategies", user_path(current_user), class: "btn" %>
   </div>
 
+  <div class="search-container">
+    <input type="text" placeholder="Search for news..." class="search-input">
+    <button type="button" class="search-button">Search</button>
+  </div>
+
 <% else %>
   <%= render LoginSignupComponent.new(form_type: @form_type, user: @user, login_user: @login_user) %>
 <% end %>
